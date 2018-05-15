@@ -1,0 +1,21 @@
+/**/
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+img {
+    border-radius: 50%;
+    width: 75%;
+    height: auto;
+}
+
+p{
+    color: #3f51b5;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    font-size: 190%;
+}
+
+.card{
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+}
