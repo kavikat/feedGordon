@@ -15,7 +15,13 @@ p{
 }
 
 .card{
-    width: 55%;
+    width: 57%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.spinner{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
 }
