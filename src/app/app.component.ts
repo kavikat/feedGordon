@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material';
 
-import { BottomComponent } from './bottom/bottom.component';
+import { DialogComponent } from './dialog/dialog.component';
+
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,11 @@ import { BottomComponent } from './bottom/bottom.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Feed Gordon!';
+
+  constructor(private dialog: MatDialog) {}
 
   minePrompt() {
+    this.dialog.open(DialogComponent);
     console.log('minePrompt ran');
   }
 
