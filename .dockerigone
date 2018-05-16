@@ -1,3 +1,5 @@
 # docker ignore
 node_modules
 .git
+.gitignore
+.editorconfig
