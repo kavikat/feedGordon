@@ -12,7 +12,7 @@ export class DialogComponent {
   constructor(public dialogRef: MatDialogRef<DialogComponent>, private bottomSheet: MatBottomSheet) { }
 
   openMiner() {
-    this.bottomSheet.open(BottomComponent);
+    //show: boolean = true;
     this.dialogRef.close();
     console.log('openMiner ran');
   }

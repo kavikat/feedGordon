@@ -1,10 +1,12 @@
-# base image
-FROM node:9.6.1
+# base image (latest)
+FROM node
 
-# install chrome for protractor tests
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-RUN apt-get update && apt-get install -yq google-chrome-stable
+# update NPM and update all packages
+RUN npm update -g \
+    npm install -g live-server
+
+# run script to watch host dir for changea
+CMD [ "live-server"]
 
 # set working directory
 RUN mkdir /usr/src/app
