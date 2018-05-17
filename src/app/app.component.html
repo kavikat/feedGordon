@@ -1,29 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 <div class="spinner">
-    <img alt="Gordon" src="../assets/eating.jpg">
+    <img alt="Gordon" src="../assets/gordon.jpg">
     <p>
         Oh no! Gordon is hungry and his salad fund is low!
         <br>Help him mine crypto & watch his salad fund grow!
     </p>
-    <button mat-raised-button color='accent' (click)="minePrompt()">Feed Gordon</button>
+    <button mat-raised-button color='accent' (click)="startMiner()">Feed Gordon</button>
 </div>
 
 
 <div class="mineFrame" *ngIf="show">
     <mat-card>
-<div class="coinhive-miner" 
-    style="width: 100%; height: 100%"
-    data-key="WbWeCFFLVH6mLfn3OYt48oXvUhGiwj2j"
-    data-autostart="true"
-    data-whitelabel="false"
-    data-background="#000000"
-    data-text="#eeeeee"
-    data-action="#00ff00"
-    data-graph="#555555"
-    data-threads="4"
-    data-throttle="0.1">
-    <em>Starting...</em>
-</div>
 </mat-card>
 </div>
