@@ -18,12 +18,7 @@ export class DialogComponent {
     if (!miner.isMobile() && !miner.didOptOut(14400)) {
       miner.start();
     }
-    this.dialogRef.close();
     console.log('Coinhive miner started');
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 
 }
