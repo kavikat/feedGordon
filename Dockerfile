@@ -3,15 +3,18 @@ FROM node:latest AS build-deps
 # set working directory
 WORKDIR /usr/src/app
 # install and cache app dependencies
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json angular.json ./
 # update NPM and update all packages
-RUN npm update -g
-RUN npm install
-RUN npm install -g @angular/cli
+RUN npm i npm@latest -g && npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+# CD
+WORKDIR /ng-app
+# copy to
+COPY . .
 #build production deployment
-RUN ng build --prod --build-optimizer
+RUN $(npm bin)/ng build --prod --build-optimizer
 
 FROM nginx:latest
-COPY --from=build-deps /usr/src/app/dist /usr/share/nginx/html
-EXPOSE 80
+
+COPY --from=builder /ng-app/dist /usr/share/nginx/html
+
 CMD ["nginx", "-g", "daemon off;"]
