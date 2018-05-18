@@ -13,5 +13,5 @@ RUN ng build --prod --build-optimizer
 # new prod server container
 FROM nginx:alpine as prod
 COPY --from=dev /feedGordon/dist/feedGordon /usr/share/nginx/html
-# open ports
+# open port
 EXPOSE 8080
