@@ -1,6 +1,6 @@
 # base image (latest)
 FROM node as dev
-# set working directory
+# install dependancies
 RUN git clone https://github.com/kavikat/feedGordon.git \
     && cd feedGordon \
     && npm update -g \
@@ -11,8 +11,7 @@ WORKDIR feedGordon
 # production build
 RUN ng build --prod --build-optimizer
 # new prod server container
-#FROM alpine:3.7 as prod
-# add app
-#COPY --from=dev /app/dist /var/www/localhost/
-# start app
+FROM nginx:alpine as prod
+COPY --from=dev /feedGordon/dist /usr/share/nginx/html
+# open ports
 #EXPOSE 8080
