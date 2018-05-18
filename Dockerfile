@@ -1,27 +1,18 @@
 # base image (latest)
-FROM node
-
+FROM node as dev
 # set working directory
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
-
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
-
+RUN mkdir app
+WORKDIR /app
 # install and cache app dependencies
-COPY package.json /usr/src/app/package.json
-
+COPY package.json /app
 # update NPM and update all packages
-RUN npm update -g
-RUN npm install -g live-server
-RUN npm install
-RUN npm install -g @angular/cli@1.7.1 --unsafe
-
-# run script to watch host dir for changea
-CMD [ "live-server"] 
-
+RUN npm update -g \
+    && npm install -g @angular/cli@1.7.1 --unsafe
+# production build
+RUN ng build --prod --build-optimizer
+# new prod server container
+FROM alpine:3.7
 # add app
-COPY . /usr/src/app
-
+COPY --from=dev /app/dist /var/www/localhost/
 # start app
-CMD ng serve --host 0.0.0.0
+EXPOSE 8080
