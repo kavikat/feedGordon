@@ -1,10 +1,11 @@
 <div style="text-align: center">
     <p>
-        Gordon Would Like To Use Your CPU for calculations.
-        <br> The calculations are securely executed in your Browser's sandbox.
-        <br> (You don't need to install anything)
+        Enter a name so Gordon knows who to thank:
     </p>
-    <button mat-raised-button color='primary' (click)="openMiner()">Allow For This Session</button>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name" value="Sushi">
+    </mat-form-field>
+    <button mat-raised-button color='primary' (click)="openMiner()">Start</button>
     <button mat-raised-button color='warn' (click)="onNoClick()">Cancel</button>
 
 </div>
