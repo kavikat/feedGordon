@@ -2,7 +2,7 @@
     <p>Enter a name so Gordon knows who to thank.</p>
 
         <mat-form-field>
-            <textarea matInput [(ngModel)]="model.minerName" name="name"></textarea>
+            <input matInput [(ngModel)]="model.minerName" minerName="name">
         </mat-form-field>
 
     <button mat-raised-button color='primary' (click)="openMiner()">Start</button>
