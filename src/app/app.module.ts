@@ -8,10 +8,14 @@ import { MatDialogModule } from '@angular/material';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BottomComponent } from './bottom/bottom.component';
 import { DialogComponent } from './dialog/dialog.component';
+
+import { MinerService } from './miner.service';
 
 @NgModule({
   declarations: [
@@ -28,9 +32,11 @@ import { DialogComponent } from './dialog/dialog.component';
     MatDialogModule,
     MatBottomSheetModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MinerService],
   entryComponents: [DialogComponent, BottomComponent],
   bootstrap: [AppComponent]
 })

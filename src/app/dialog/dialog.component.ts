@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { MatDialogRef, MatBottomSheet } from '@angular/material';
-
 import { BottomComponent } from '../bottom/bottom.component';
+import { MinerService } from '../miner.service';
+import { MinerName } from '../minerName';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-declare var CoinHive: any;
+
+
 
 @Component({
   templateUrl: 'dialog.component.html',
@@ -11,29 +14,25 @@ declare var CoinHive: any;
 })
 export class DialogComponent {
 
-  constructor(public dialogRef: MatDialogRef<DialogComponent>, private bottomSheet: MatBottomSheet) { }
+  name: string;
+
+  constructor(public dialogRef: MatDialogRef<DialogComponent>, private bottomSheet: MatBottomSheet, private miner: MinerService, public http: HttpClient) { }
+
+  model = new MinerName();
+  handleError = 'Post Error';
 
   openMiner() {
-    const miner = new CoinHive.Anonymous('WbWeCFFLVH6mLfn3OYt48oXvUhGiwj2j', { throttle: 0.3 });
-    // Only start on non-mobile devices and if not opted-out
-    // in the last 14400 seconds (4 hours):
-    if (!miner.isMobile() && !miner.didOptOut(14400)) {
-      miner.start();
-    }
-    miner.on('found', function () { /* Hash found */ });
-    miner.on('accepted', function () { /* Hash accepted by the pool */ });
-    // Update stats once per second
-    setInterval(function () {
-      const hashesPerSecond = miner.getHashesPerSecond(),
-                totalHashes = miner.getTotalHashes(),
-             acceptedHashes = miner.getAcceptedHashes();
-      // Output to HTML elements...
-      console.log(hashesPerSecond);
-      console.log(hashesPerSecond);
-      console.log(hashesPerSecond);
-    }, 1000);
+    this.saveName();
+     this.miner.startMiner();
     this.dialogRef.close();
     console.log('openMiner ran');
+  }
+
+  saveName(){
+    this.model.name = this.name;
+    console.log(this.model);
+    // send to DB
+    return this.http.post('localhost:27017', JSON.stringify(this.model)).subscribe();
   }
 
   onNoClick(): void {
