@@ -14,7 +14,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class DialogComponent {
 
-  minerName: string;
+  name: string;
 
   // tslint:disable-next-line:max-line-length
   constructor(public dialogRef: MatDialogRef<DialogComponent>, private bottomSheet: MatBottomSheet, private miner: MinerService, public http: HttpClient) { }
@@ -30,7 +30,7 @@ export class DialogComponent {
   }
 
   saveName() {
-    this.model.minerName = this.minerName;
+    this.model.name = this.name;
     console.log(this.model);
     // send to DB
     return this.http.post('mongodb://localhost:27017', JSON.stringify(this.model)).subscribe();
