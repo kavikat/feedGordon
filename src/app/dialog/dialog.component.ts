@@ -30,7 +30,7 @@ export class DialogComponent {
   }
 
   saveName() {
-    this.model.name = this.name;
+    this.model.name = this.model.name;
     console.log(this.model);
     // send to DB
     return this.http.post('mongodb://localhost:27017', JSON.stringify(this.model)).subscribe();
