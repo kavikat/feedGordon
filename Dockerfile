@@ -1,6 +1,9 @@
 # base image (latest)
 FROM node as dev
 # install dependancies
+#COMMAND
+RUN echo 'LATEST BUILD'
+#
 RUN git clone https://github.com/kavikat/feedGordon.git \
     && cd feedGordon \
     && npm update -g \

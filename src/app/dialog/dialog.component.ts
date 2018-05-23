@@ -32,7 +32,7 @@ export class DialogComponent {
     this.model.name = this.name;
     console.log(this.model);
     // send to DB
-    return this.http.post('localhost:27017', JSON.stringify(this.model)).subscribe();
+    return this.http.post('mongodb://localhost:27017', JSON.stringify(this.model)).subscribe();
   }
 
   onNoClick(): void {
