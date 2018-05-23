@@ -6,7 +6,7 @@ import { MinerName } from '../minerName';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
-declare var minerName: any;
+//declare var minerName: any;
 
 @Component({
   templateUrl: 'dialog.component.html',
