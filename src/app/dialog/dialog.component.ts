@@ -16,6 +16,7 @@ export class DialogComponent {
 
   name: string;
 
+  // tslint:disable-next-line:max-line-length
   constructor(public dialogRef: MatDialogRef<DialogComponent>, private bottomSheet: MatBottomSheet, private miner: MinerService, public http: HttpClient) { }
 
   model = new MinerName();
@@ -28,7 +29,7 @@ export class DialogComponent {
     console.log('openMiner ran');
   }
 
-  saveName(){
+  saveName() {
     this.model.name = this.name;
     console.log(this.model);
     // send to DB
