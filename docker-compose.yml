@@ -1,16 +1,35 @@
-version: '3'
+version: '3.3'
+
+secrets:
+  password:
+    file: ./password
+
 services:
-  myservice:
+
+  feedgordon:
     build:
       context: ./
       dockerfile: Dockerfile
-    ports:
-    - "8080:8080"
-    depends_on:
-    - mongo
+    networks:
+      - frontend
+      - backend
+
   mongo:
-    image: mongo
-    ports:
-    - "27017:27017"
+    image: mongo:latest
+    networks:
+      - backend
+    restart: always
+    secrets:
+      - password
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: AbobNebCoodVia7
+
+volumes:
+  mongo-data:
+
+networks:
+  frontend:
+  backend:
 
 
