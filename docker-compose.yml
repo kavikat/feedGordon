@@ -1,9 +1,5 @@
 version: '3.3'
 
-secrets:
-  password:
-    file: ./password
-
 services:
 
   feedgordon:
@@ -19,11 +15,11 @@ services:
     networks:
       - backend
     restart: always
-    secrets:
-      - password
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: AbobNebCoodVia7
+    ports:
+      - "27017:27017"
 
 volumes:
   mongo-data:
@@ -31,5 +27,3 @@ volumes:
 networks:
   frontend:
   backend:
-
-
