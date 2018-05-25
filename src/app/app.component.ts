@@ -28,4 +28,8 @@ export class AppComponent {
     console.log('minePrompt ran');
   }
 
+  displayData(){
+    console.log(this.hashesPerSecond);
+  }
+
 }
